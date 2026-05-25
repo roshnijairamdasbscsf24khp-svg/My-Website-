@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roshni Kanjhwani | Portfolio</title>
+
+  <!-- Elegant, readable fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg: #fffaf7;          /* warm white */
+      --card: #ffffff;
+      --text: #2b2b2b;
+      --muted: #6b6b6b;
+
+      --beige: #f6efe8;
+      --pink:  #fde7ef;
+      --lav:   #efe9ff;
+      --line:  rgba(20,20,20,.08);
+
+      --shadow: 0 14px 40px rgba(20, 20, 20, .08);
+      --shadow-soft: 0 10px 24px rgba(20, 20, 20, .06);
+
+      --radius: 18px;
+      --radius-lg: 26px;
+
+      --accent: #b58bd6;      /* lavender accent */
+      --accent2:#f2a7c2;      /* soft pink accent */
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 10%, var(--pink), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, var(--lav), transparent 60%),
+        radial-gradient(900px 500px at 50% 100%, var(--beige), transparent 60%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .container{ width:min(1100px, 92%); margin: 0 auto; }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.65);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+    .brand-badge{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--lav), var(--pink));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+    }
+    .nav-links{
+      display:flex; gap: 14px; flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav-links a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: .2s ease;
+    }
+    .nav-links a:hover{
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+      box-shadow: 0 8px 18px rgba(20,20,20,.06);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: center;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .hero-card{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow:hidden;
+      position: relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(135deg, rgba(181,139,214,.18), rgba(242,167,194,.18));
+      filter: blur(18px);
+      z-index:0;
+    }
+    .hero-card > *{ position: relative; z-index: 1; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .kicker i{ color: var(--accent); }
+
+    h1{
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+      margin: 14px 0 10px;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+      margin: 0 0 18px;
+    }
+    .cta-row{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 22px rgba(20,20,20,.06);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(20,20,20,.10);
+      background: rgba(255,255,255,.9);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(239,233,255,.9), rgba(253,231,239,.9));
+      border-color: rgba(181,139,214,.25);
+    }
+
+    /* Profile placeholder */
+    .profile{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .avatar-frame {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--lav), var(--pink), var(--beige));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Center crop hides faces in tall portraits; bias upward so the head stays in frame */
+      object-position: center 25%;
+      border-radius: 50%;
+      display: block;
+    }
+    .profile small{ color: var(--muted); }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .section-head{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .section-title i{ color: var(--accent2); }
+    .section-note{ color: var(--muted); font-size: 14px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(20,20,20,.10);
+    }
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+    }
+
+    .pill-row{ display:flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .pill{
+      font-size: 13px;
+      color: rgba(43,43,43,.85);
+      background: linear-gradient(135deg, rgba(239,233,255,.75), rgba(253,231,239,.65));
+      border: 1px solid rgba(181,139,214,.18);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .list{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .list .item{ grid-column: span 4; }
+    @media (max-width: 900px){
+      .list .item{ grid-column: span 12; }
+    }
+
+    .item h3{
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .item p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Contact */
+    .contact-card{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .contact-links{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Certificate image gallery */
+    .cert-gallery-wrap{
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .cert-gallery-heading{
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(26px, 3.2vw, 34px);
+      text-align: center;
+      margin: 0 0 24px;
+      letter-spacing: .02em;
+      color: var(--text);
+    }
+    .cert-gallery{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (min-width: 560px){
+      .cert-gallery{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px){
+      .cert-gallery{ grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    }
+    @media (min-width: 1100px){
+      .cert-gallery{ grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .cert-tile{
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border-radius: var(--radius);
+    }
+    .cert-tile:focus{ outline: none; }
+    .cert-tile:focus-visible{
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: var(--radius);
+    }
+
+    .cert-tile-inner{
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255, 255, 255, .52);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, .7);
+      box-shadow: var(--shadow-soft);
+      padding: 12px;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .cert-tile:hover .cert-tile-inner,
+    .cert-tile:focus-visible .cert-tile-inner{
+      transform: scale(1.03);
+      box-shadow: 0 20px 44px rgba(20, 20, 20, .12);
+    }
+    .cert-tile img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius) - 6px);
+    }
+
+    .cert-modal{
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s ease, visibility .28s ease;
+    }
+    .cert-modal.is-open{
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .cert-modal-backdrop{
+      position: absolute;
+      inset: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: rgba(35, 30, 42, .42);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+    }
+    .cert-modal-dialog{
+      position: relative;
+      z-index: 1;
+      max-width: min(94vw, 960px);
+      max-height: 90vh;
+      margin: auto;
+    }
+    .cert-modal-dialog img{
+      display: block;
+      max-width: 100%;
+      max-height: 86vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 28px 64px rgba(0, 0, 0, .22);
+    }
+    .cert-modal-close{
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      box-shadow: var(--shadow-soft);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .cert-modal-close:hover{
+      background: #fff;
+      transform: scale(1.05);
+    }
+
+    .visually-hidden{
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Soft fade-in animation */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity: 1; transform: none; transition: none; }
+      .btn, .card{ transition: none; }
+      .cert-tile .cert-tile-inner{ transition: none; }
+      .cert-tile:hover .cert-tile-inner,
+      .cert-tile:focus-visible .cert-tile-inner{ transform: none; }
+      .cert-modal{ transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <span>Roshni Kanjhwani</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="hero-grid">
+        <div class="hero-card reveal">
+          <span class="kicker"><i class="fa-regular fa-sparkles"></i> </span>
+          <h1>Roshni Kanjhwani</h1>
+          <p class="subtitle">Aspiring Developer &amp; Cybersecurity Learner</p>
+          <p class="subtitle" style="margin-top:-6px;">
+            "A dedicated student from Pakistan with a strong interest in programming and cybersecurity,
+             experienced in building beginner-friendly projects.
+             Skilled in C++, Java, Python, MySQL, Data Structures & Algorithms (Java), and Networking."
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#projects"><i class="fa-solid fa-code"></i> View Projects</a>
+            <a class="btn" href="#contact"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="profile reveal" aria-label="Profile">
+          <div class="avatar-frame">
+            <div class="avatar">
+              <img src="profile.jpg.jpeg" alt="Roshni Kanjhwani">
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:600;">Student • Tech Enthusiast</div>
+            <small></small>
+          </div>
+          <div class="pill-row" aria-label="Highlights">
+            <span class="pill"><i class="fa-solid fa-laptop-code"></i> Programming</span>
+            <span class="pill"><i class="fa-solid fa-shield-halved"></i> Cyber Basics</span>
+            <span class="pill"><i class="fa-regular fa-file-lines"></i> Certificates</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <div class="section-title"><i class="fa-regular fa-user"></i> About Me</div>
+        <div class="section-note">A short, friendly intro</div>
+      </div>
+
+      <div class="grid">
+        <div class="card reveal" style="grid-column: span 12;">
+          <p style="margin:0; color: var(--muted); font-size: 15px;">
+            Hi! I’m <strong style="color:var(--text);">Roshni Kanjhwani</strong>, a student from Pakistan studying Computer Science at Sukkur IBA University in the 4th semester, with a growing interest in
+            programming and technology. I enjoy learning by building small projects, improving my problem-solving skills,
+            and exploring cybersecurity fundamentals step by step.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <div class="section-title"><i class="fa-regular fa-gem"></i> Skills</div>
+      </div>
+
+      <div class="list">
+        <div class="card item reveal">
+          <h3><i class="fa-solid fa-code" style="color:var(--accent); margin-right:8px;"></i> Programming</h3>
+          <p>C++, Java, Python, DSA(java), Microsoft Office, Networking, Basic Designing </p>
+        </div>
+        <div class="card item reveal">
+          <h3><i class="fa-solid fa-table" style="color:var(--accent); margin-right:8px;"></i> Productivity</h3>
+          <p> Microsoft Office
+             • Word & PowerPoint (Proficient) 
+             • Excel (Basic)</p>
+        </div>
+        <div class="card item reveal">
+          <h3><i class="fa-solid fa-shield-halved" style="color:var(--accent); margin-right:8px;"></i> Cybersecurity</h3>
+          <p>Basic cybersecurity knowledge &amp; awareness</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates">
+      <div class="section-head">
+        <div class="section-title"><i class="fa-regular fa-certificate"></i> Certificates</div>
+        <div class="section-note">Programs &amp; credentials</div>
+      </div>
+
+      <div class="grid">
+        <div class="card reveal">
+          <h3 style="margin:0 0 6px; font-size:15px;">
+            <i class="fa-solid fa-award" style="color:var(--accent2); margin-right:8px;"></i>
+            Deloitte Cyber Job Simulation
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            Virtual experience / job simulation certificate.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin:0 0 6px; font-size:15px;">
+            <i class="fa-solid fa-award" style="color:var(--accent2); margin-right:8px;"></i>
+            Great Learning Courses
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            Completed beginner-friendly tech courses .
+          </p>
+        </div>
+      </div>
+
+      
+        <div class="card reveal">
+          <h3 style="margin:0 0 6px; font-size:15px;">
+            <i class="fa-solid fa-award" style="color:var(--accent2); margin-right:8px;"></i>
+            Anthropic Courses
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            Completed claude 101, AI  influency for students courses .
+          </p>
+        </div>
+      </div>
+
+
+        <div class="card reveal">
+          <h3 style="margin:0 0 6px; font-size:15px;">
+            <i class="fa-solid fa-award" style="color:var(--accent2); margin-right:8px;"></i>
+            Simplilearn SkillUp Courses, Linkedin Learning
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            Completed basics programming courses .
+          </p>
+        </div>
+      </div>
+
+      <div class="cert-gallery-wrap">
+        <h2 class="cert-gallery-heading">My Certificates</h2>
+        <div class="cert-gallery" aria-label="Certificate thumbnails">
+          <button type="button" class="cert-tile reveal" data-cert-src="cert1.jpg.jpg" aria-label="Open certificate 1 full size">
+            <span class="cert-tile-inner">
+              <img src="cert1.jpg.jpg" alt="Certificate 1" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert2.jpg.jpg" aria-label="Open certificate 2 full size">
+            <span class="cert-tile-inner">
+              <img src="cert2.jpg.jpg" alt="Certificate 2" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert3.jpg.jpg" aria-label="Open certificate 3 full size">
+            <span class="cert-tile-inner">
+              <img src="cert3.jpg.jpg" alt="Certificate 3" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert4.jpg.jpg" aria-label="Open certificate 4 full size">
+            <span class="cert-tile-inner">
+              <img src="cert4.jpg.jpg" alt="Certificate 4" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert5.jpg.jpg" aria-label="Open certificate 5 full size">
+            <span class="cert-tile-inner">
+              <img src="cert5.jpg.jpg" alt="Certificate 5" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert6.jpg.jpg" aria-label="Open certificate 6 full size">
+            <span class="cert-tile-inner">
+              <img src="cert6.jpg.jpg" alt="Certificate 6" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert7.jpg.jpg" aria-label="Open certificate 7 full size">
+            <span class="cert-tile-inner">
+              <img src="cert7.jpg.jpg" alt="Certificate 7" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert8.jpg.jpg" aria-label="Open certificate 8 full size">
+            <span class="cert-tile-inner">
+              <img src="cert8.jpg.jpg" alt="Certificate 8" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert9.jpg.jpg" aria-label="Open certificate 9 full size">
+            <span class="cert-tile-inner">
+              <img src="cert9.jpg.jpg" alt="Certificate 9" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert10.jpg.jpg" aria-label="Open certificate 10 full size">
+            <span class="cert-tile-inner">
+              <img src="cert10.jpg.jpg" alt="Certificate 10" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert11.jpg.jpg" aria-label="Open certificate 11 full size">
+            <span class="cert-tile-inner">
+              <img src="cert11.jpg.jpg" alt="Certificate 11" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert12.jpg.jpg" aria-label="Open certificate 12 full size">
+            <span class="cert-tile-inner">
+              <img src="cert12.jpg.jpg" alt="Certificate 12" loading="lazy" decoding="async">
+            </span>
+             </span>
+          </button>
+          <button type="button" class="cert-tile reveal" data-cert-src="cert12.jpg.jpg" aria-label="Open certificate 12 full size">
+            <span class="cert-tile-inner">
+              <img src="cert13.jpg.jpg" alt="Certificate 13" loading="lazy" decoding="async">
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <div class="section-title"><i class="fa-regular fa-folder-open"></i> My Projects</div>
+        <div class="section-note">Featured work</div>
+      </div>
+
+      <div class="grid">
+        <div class="card reveal" style="grid-column: span 12;">
+          <h3 style="margin:0 0 6px; font-size:18px;">
+            <i class="fa-solid fa-gamepad" style="color:var(--accent); margin-right:8px;"></i>
+            Roshni Game Project
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            A simple C++ console game where players guess a hidden word.
+          </p>
+          <div class="pill-row">
+            <span class="pill">C++</span>
+          </div>
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="roshni-game.cpp.cpp" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i> View Code
+            </a>
+            <a class="btn" href="roshni-game.exe.exe" download>
+              <i class="fa-solid fa-download"></i> Download/Run Game
+            </a>
+          </div>
+        </div>
+
+        <div class="card reveal" style="grid-column: span 12;">
+          <h3 style="margin:0 0 6px; font-size:18px;">
+            <i class="fa-solid fa-diagram-project" style="color:var(--accent); margin-right:8px;"></i>
+            Roshni Kanjhwani Wind Detector Project
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            A networking-based academic project focused on wind detection and data monitoring.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Networking</span>
+            <span class="pill">Computer Networks</span>
+          </div>
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="Roshni Kanjhwani wind detector project.pkt" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i> View Code
+            </a>
+            <a class="btn" href="Roshni Kanjhwani wind detector project.pkt" download>
+              <i class="fa-solid fa-download"></i> Download/Run Project
+            </a>
+          </div>
+        </div>
+
+        <div class="card reveal" style="grid-column: span 12;">
+          <h3 style="margin:0 0 6px; font-size:18px;">
+            <i class="fa-solid fa-utensils" style="color:var(--accent); margin-right:8px;"></i>
+            Pizza Hut DSA Project
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            A Java-based Pizza Hut management system built using Data Structures and Algorithms, including arrays, linked lists, queues, priority queues, and Dijkstra’s algorithm.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Java</span>
+            <span class="pill">DSA</span>
+            <span class="pill">Priority Queue</span>
+            <span class="pill">Dijkstra Algorithm</span>
+          </div>
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="pizzahutproject-Update" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i> View Code
+            </a>
+            <a class="btn" href="pizzahutproject-Update" download>
+              <i class="fa-solid fa-download"></i> Download/Run Project
+            </a>
+          </div>
+        </div>
+
+        <div class="card reveal" style="grid-column: span 12;">
+          <h3 style="margin:0 0 6px; font-size:18px;">
+            <i class="fa-solid fa-user-check" style="color:var(--accent); margin-right:8px;"></i>
+            Smart Attendance System
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            A Python and OpenCV application that uses the camera to scan and recognize faces, then marks attendance automatically. It also includes a manual attendance option for flexibility.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">OpenCV</span>
+            <span class="pill">Face Recognition</span>
+            <span class="pill">Computer Vision</span>
+          </div>
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="smart_attendance_system" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i> View Code
+            </a>
+            <a class="btn" href="smart_attendance_system" download>
+              <i class="fa-solid fa-download"></i> Download/Run Project
+            </a>
+          </div>
+        </div>
+
+        <div class="card reveal" style="grid-column: span 12;">
+          <h3 style="margin:0 0 6px; font-size:18px;">
+            <i class="fa-solid fa-mobile-screen" style="color:var(--accent); margin-right:8px;"></i>
+            No Phone Zone
+          </h3>
+          <p style="margin:0; color:var(--muted); font-size:14px;">
+            A Python and OpenCV project that monitors the camera to detect phone usage in real time. When a phone is detected, it plays an alert sound to discourage use in restricted areas.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">OpenCV</span>
+            <span class="pill">Object Detection</span>
+            <span class="pill">Computer Vision</span>
+          </div>
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="no_phone_zone_2" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i> View Code
+            </a>
+            <a class="btn" href="no_phone_zone_2" download>
+              <i class="fa-solid fa-download"></i> Download/Run Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <div class="section-title"><i class="fa-regular fa-envelope"></i> Contact</div>
+        <div class="section-note">Email + LinkedIn</div>
+      </div>
+
+      <div class="card contact-card reveal">
+        <div>
+          <div style="font-weight:600; margin-bottom:4px;">Let’s connect</div>
+          <div style="color:var(--muted); font-size:14px;">
+            Email: <a href="mailto:roshnikanjhwani22@gmail.com" style="text-decoration:underline;">roshnikanjhwani22@gmail.com</a><br/>
+            Email: <a href="mailto:roshni.jairamdas.bscsf24khp@iba-suk.edu.pk" style="text-decoration:underline;">roshni.jairamdas.bscsf24khp@iba-suk.edu.pk  </a><br/>
+            LinkedIn: <a href="https://www.linkedin.com/in/roshni-kanjhwani-980183320/?skipRedirect=true" style="text-decoration:underline;">linkedin.com/in/roshnikanjhwani</a>
+          </div>
+        </div>
+
+        <div class="contact-links">
+          <a class="btn primary" href="mailto:roshnikanjhwani22@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+          <a class="btn" href="https://linkedin.com/in/roshnikanjhwani" style="text-decoration:underline;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="reveal">
+        © <span id="year"></span> Roshni Kanjhwani
+    </footer>
+  </main>
+
+  <div class="cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title" aria-hidden="true">
+    <span id="cert-modal-title" class="visually-hidden">Certificate preview</span>
+    <button type="button" class="cert-modal-backdrop" aria-label="Close certificate preview"></button>
+    <div class="cert-modal-dialog">
+      <button type="button" class="cert-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <img src="" alt="" id="cert-modal-img">
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Soft reveal on scroll
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+
+    (function () {
+      var modal = document.getElementById('cert-modal');
+      var modalImg = document.getElementById('cert-modal-img');
+      var backdrop = modal.querySelector('.cert-modal-backdrop');
+      var closeBtn = modal.querySelector('.cert-modal-close');
+
+      function openModal(src, alt) {
+        modalImg.src = src;
+        modalImg.alt = alt || 'Certificate';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        modalImg.removeAttribute('src');
+        modalImg.alt = '';
+      }
+
+      document.querySelectorAll('.cert-tile').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var img = btn.querySelector('img');
+          var src = btn.getAttribute('data-cert-src') || (img && img.getAttribute('src'));
+          if (src) openModal(src, img ? img.alt : '');
+        });
+      });
+
+      backdrop.addEventListener('click', closeModal);
+      closeBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>
